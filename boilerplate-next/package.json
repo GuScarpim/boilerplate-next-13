@@ -22,10 +22,8 @@
   },
   "husky": {
     "hooks": {
-      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
-      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
-      "post-applypatch": "echo \"[Husky] post-applypatch\"",
-      "pre-commit": "echo \"[Husky] pre-commit\""
+      "pre-commit": "npm run prettier-format && npm run lint && npm run lint-staged",
+      "pre-push": "npm run test -- --coverage && git push || echo 'Tests failed. Push aborted.' && exit 1"
     }
   },
   "dependencies": {
